@@ -1,0 +1,36 @@
+import React from 'react';
+import './Footer.css';
+import logo from '../../assets/images/logo.png';
+import rsIcon from '../../assets/icons/rs_school_js.svg';
+import githubIcon from '../../assets/icons/github.svg';
+
+const Footer: React.FC = () => {
+  return (
+    <footer>
+      <div className="footer__wrapper">
+        <div className="footer__container">
+          <img className="footer__logo" src={logo} />
+          <nav className="footer__nav">
+            <ul className="footer__list">
+              <li className="footer__item">
+                <a href="https://github.com/gamesam88/online-store">
+                  <img src={githubIcon} alt="github" />
+                </a>
+              </li>
+              <li className="footer__item">
+                <a href="https://rs.school/js/">
+                  <img src={rsIcon} alt="RS-school" />
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <span>
+            <b>© 2022 Q3</b>
+          </span>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
