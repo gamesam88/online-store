@@ -1,30 +1,30 @@
-.footer__wrapper{
-  background: #F7F7F7;
+.wrapper {
+  background: #f7f7f7;
   height: 100px;
 }
 
-.footer__container{
+.container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100% ;
+  height: 100%;
   margin: 0 20px;
 }
 
-.footer__logo{
+.logo {
   height: 50px;
 }
 
-.footer__list{
+.list {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.footer__item{
+.item {
   margin: 0 20px;
-}
 
-.footer__item img{
-  height: 30px;
+  img {
+    height: 30px;
+  }
 }
