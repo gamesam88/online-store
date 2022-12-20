@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
         <div className={styles.container}>
           <img className={styles.logo} src={logo} />
           <nav className={styles.nav}>
-            <ul className={styles.list}>
+            <ul className={styles.list}> 
               <li className={styles.item}>
                 <a href="https://github.com/gamesam88/online-store">
                   <img src={githubIcon} alt="github" />

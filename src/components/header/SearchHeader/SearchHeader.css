@@ -1,0 +1,15 @@
+.image__search{
+    width: 22px;
+    height: 22px;
+    margin-left: 80px;
+}
+.inputStyle{
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    padding: 3px 3px 3px 3px;
+    width: 210px;
+}
