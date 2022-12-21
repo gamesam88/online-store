@@ -7,10 +7,12 @@ interface ICart {
   styleCart: string;
 }
 
-export function ShoppingCart({ styleCart }: ICart) {
+function ShoppingCart({ styleCart }: ICart) {
   return (
     <Link to="/" className={`img__cart ${styleCart}`}>
       <img src={cart} alt="cart" />
     </Link>
   );
 }
+
+export default ShoppingCart;
