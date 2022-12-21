@@ -27,13 +27,12 @@ export const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    getProducts: (state, action: PayloadAction<ProductType[]>) => {
-      console.log(state.products);
+    setProducts: (state, action: PayloadAction<ProductType[]>) => {
       state.products = action.payload;
     },
   },
 });
 
-export const { getProducts } = productsSlice.actions;
+export const { setProducts } = productsSlice.actions;
 
 export default productsSlice.reducer;
