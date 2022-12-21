@@ -4,7 +4,7 @@ interface INav {
   styleNav: string;
 }
 
-export function NavHeader({ styleNav }: INav) {
+function NavHeader({ styleNav }: INav) {
   return (
     <nav className={`navigation ${styleNav}`}>
       <ul className="header__nav">
@@ -17,3 +17,5 @@ export function NavHeader({ styleNav }: INav) {
     </nav>
   );
 }
+
+export default NavHeader;

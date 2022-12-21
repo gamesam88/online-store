@@ -1,11 +1,11 @@
 import React from "react";
 import "./header.scss";
 import { Logo } from "./logo/logo";
-import { NavHeader } from "./NavHeader/NavHeader";
+import NavHeader from "./NavHeader/NavHeader";
 import { SearchHeader } from "./SearchHeader/SearchHeader";
-import { ShoppingCart } from "./HeaderCart/ShoppingCart";
+import ShoppingCart from "./HeaderCart/ShoppingCart";
 
-export function Header() {
+function Header() {
   return (
     <header className="header">
       <div className="container header__container">
@@ -17,3 +17,5 @@ export function Header() {
     </header>
   );
 }
+
+export default Header;
