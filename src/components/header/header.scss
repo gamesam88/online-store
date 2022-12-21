@@ -1,0 +1,22 @@
+.header {
+  height: 72px;
+  background: var(--grey);
+}
+.header__container {
+  display: flex;
+  justify-content: space-evenly;
+}
+.header__logo {
+  margin-top: 12px;
+}
+.header__navigation {
+  margin-top: 5px;
+}
+.header__search {
+  margin-top: 22px;
+  width: 210px;
+}
+
+.header__cart {
+  margin-top: 18px;
+}
