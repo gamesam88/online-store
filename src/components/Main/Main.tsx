@@ -7,6 +7,7 @@ import Sorting from "./Sorting/Sorting";
 import axios from "axios";
 import "./Main.scss";
 import { Catalog } from "../catalog/Catalog";
+import SideBar from "../SideBar/SideBar";
 
 interface Resp {
   products: ProductType[];
@@ -30,8 +31,11 @@ const Main = () => {
 
   return (
     <main className="main">
-      <Sorting />
-      <Catalog products={products} />
+      <SideBar products={products} />
+      <div>
+        <Sorting />
+        <Catalog products={products} />
+      </div>
     </main>
   );
 };
