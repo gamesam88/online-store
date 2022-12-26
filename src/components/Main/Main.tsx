@@ -9,30 +9,29 @@ import "./Main.scss";
 import { Catalog } from "../catalog/Catalog";
 import SideBar from "../SideBar/SideBar";
 
-interface Resp {
+type Resp = {
   products: ProductType[];
   total: number;
   skip: number;
   limit: number;
-}
+};
 
 const Main = () => {
   const products = useSelector((state: RootState) => state.products.products);
   const dispatch = useDispatch();
-  const url = "https://dummyjson.com/products?limit=100";
 
   useEffect(() => {
+    const url = "https://dummyjson.com/products?limit=100";
+
     axios.get<Resp>(url).then((response) => {
       dispatch(setProducts(response.data.products));
     });
   }, []);
 
-  console.log(products);
-
   return (
     <main className="main">
       <SideBar products={products} />
-      <div>
+      <div className="main__wrapper">
         <Sorting />
         <Catalog products={products} />
       </div>

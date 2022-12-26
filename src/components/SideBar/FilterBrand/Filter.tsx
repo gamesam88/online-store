@@ -1,16 +1,17 @@
 import React from "react";
 import "./Filter.scss";
-import BrandItem from "./BrandItem/FilterItem";
+import FilterListItem from "./FilterListItem/FilterListItem";
 
-type PropsType = {
+interface IPropsType {
   data: string[];
-};
+  filterKey: string;
+}
 
-const Filter: React.FC<PropsType> = (props) => {
+const Filter: React.FC<IPropsType> = (props) => {
   return (
-    <div className={"brand"}>
+    <div className="filter">
       {Array.from(props.data).map((el, id) => (
-        <BrandItem key={id} itemName={el} />
+        <FilterListItem key={id} value={el} filterKey={props.filterKey} />
       ))}
     </div>
   );
