@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { fiterHelper } from "../../helpers/filter";
+import { fiterHelper, sortHelper } from "../../helpers/filter";
 import { ProductType } from "../../models/models";
 import { RootState } from "../../redux/store";
 import { ProductCard } from "../productCard/ProductCard";
@@ -12,14 +12,17 @@ type PropsType = {
 };
 
 export function Catalog(props: PropsType) {
-  const { brands, categories } = useSelector((state: RootState) => state.filter);
-  const filter = useSelector((state: RootState) => state.filter);
-  console.log(filter);
+  const { brands, categories, sort, price, stock } = useSelector((state: RootState) => state.filter);
+  const filteredProducts: ProductType[] = fiterHelper(props.products, brands, categories);
+  const sortProducts: ProductType[] = sortHelper(sort, filteredProducts);
+  const rangeProducts: ProductType[] = sortProducts.filter(
+    (el) => el.price >= price[0] && el.price <= price[1] && el.stock >= stock[0] && el.stock <= stock[1]
+  );
 
   return (
     <div className="catalog-block">
-      {fiterHelper(props.products, brands, categories).map((product) => (
-        <ProductCard product={product} key={product.id} />
+      {rangeProducts.map((product) => (
+        <ProductCard product={product} key={product.id} id={product.id} />
       ))}
     </div>
   );

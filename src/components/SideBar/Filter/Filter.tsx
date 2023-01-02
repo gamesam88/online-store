@@ -1,6 +1,6 @@
 import React from "react";
 import "./Filter.scss";
-import FilterListItem from "./FilterListItem/FilterListItem";
+import FilterListItem from "./FilterItem/FilterItem";
 
 interface IPropsType {
   data: string[];

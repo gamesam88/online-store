@@ -17,15 +17,18 @@ type Resp = {
 };
 
 const Main = () => {
-  const products = useSelector((state: RootState) => state.products.products);
+  const { products } = useSelector((state: RootState) => state.products);
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  async function myFetch() {
     const url = "https://dummyjson.com/products?limit=100";
-
     axios.get<Resp>(url).then((response) => {
       dispatch(setProducts(response.data.products));
     });
+  }
+
+  useEffect(() => {
+    myFetch();
   }, []);
 
   return (

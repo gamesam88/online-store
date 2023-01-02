@@ -3,18 +3,20 @@ import { useState } from "react";
 import "./productCard.scss";
 import { AddProductToCart } from "../addProductToCart/addProductToCard";
 import { ProductType } from "../../models/models";
+import { Link } from "react-router-dom";
 interface IProductProps {
   product: ProductType;
+  id: number;
 }
 
-export function ProductCard({ product }: IProductProps) {
+export function ProductCard({ product, id }: IProductProps) {
   const [details, setDetails] = useState(false);
 
   const btnClassName = details ? "add-yellow" : "add-blue";
   const btnClasses = ["btn-class", btnClassName];
 
   return (
-    <div>
+    <Link to={`${id}`}>
       {
         <div className="card ">
           <img src={product.thumbnail} alt={product.title} className="card-image" />
@@ -34,6 +36,6 @@ export function ProductCard({ product }: IProductProps) {
           <AddProductToCart />
         </div>
       }
-    </div>
+    </Link>
   );
 }

@@ -13,3 +13,38 @@ export const fiterHelper = (arr: ProductType[], brands: string[], categories: st
 
   return arr.filter((el) => brands.indexOf(el.brand) !== -1).filter((el) => categories.indexOf(el.category) !== -1);
 };
+
+export const sortHelper = (value: string, products: ProductType[]): ProductType[] => {
+  const result = products.slice(0);
+  switch (value) {
+    case "price":
+      return result.sort((a, b) => a.price - b.price);
+      break;
+    case "reversePrice":
+      return result.sort((a, b) => b.price - a.price);
+      break;
+    case "rating":
+      return result.sort((a, b) => a.rating - b.rating);
+      break;
+    case "reverseRating":
+      return result.sort((a, b) => b.rating - a.rating);
+      break;
+    case "discount":
+      return result.sort((a, b) => a.discountPercentage - b.discountPercentage);
+      break;
+    case "reverseDiscount":
+      return result.sort((a, b) => b.discountPercentage - a.discountPercentage);
+      break;
+    default:
+      return result;
+      break;
+  }
+};
+
+type TfindMinMax = (arr: number[]) => number[];
+
+export const findMinMax: TfindMinMax = (arr) => {
+  const min = Math.min(...arr.map((el) => el));
+  const max = Math.max(...arr.map((el) => el));
+  return [min, max];
+};

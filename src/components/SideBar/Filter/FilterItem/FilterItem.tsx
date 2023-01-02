@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addFilter, clearFilters, removeFilter } from "../../../../redux/slices/filterSlice";
+import { addFilter, removeFilter } from "../../../../redux/slices/filterSlice";
 import { RootState } from "../../../../redux/store";
 
-import "./FilterListItem.scss";
+import "./FilterItem.scss";
 
 type PropsType = {
   value: string;
@@ -20,9 +20,6 @@ const FilterListItem: React.FC<PropsType> = ({ value, filterKey }) => {
     if (clear) {
       setChecked(false);
     }
-    return () => {
-      dispatch(clearFilters(false));
-    };
   }, [clear]);
 
   return (

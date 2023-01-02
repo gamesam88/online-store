@@ -6,13 +6,17 @@ export interface FilterState {
   categories: string[];
   sort: string;
   clear: boolean;
+  price: number[];
+  stock: number[];
 }
 
 const initialState = {
   brands: [],
   categories: [],
-  sort: "price",
+  sort: "rating",
   clear: false,
+  price: [10, 1749],
+  stock: [2, 152],
 };
 
 export const filterSlice = createSlice({
@@ -21,13 +25,27 @@ export const filterSlice = createSlice({
   reducers: {
     changeSort: (state, action: PayloadAction<string>) => {
       state.sort = action.payload;
-      console.log(state.sort);
+    },
+
+    setRange: (state, action: PayloadAction<[string, number[]]>) => {
+      switch (action.payload[0]) {
+        case "price":
+          state.price = action.payload[1];
+          break;
+        case "stock":
+          state.stock = action.payload[1];
+          break;
+        default:
+          break;
+      }
     },
 
     clearFilters: (state, action: PayloadAction<boolean>) => {
       state.brands = [];
       state.categories = [];
       state.clear = action.payload;
+      state.price = [10, 1749];
+      state.stock = [2, 152];
     },
 
     addFilter: (state: FilterState, action: PayloadAction<Array<string>>) => {
@@ -64,6 +82,6 @@ export const filterSlice = createSlice({
   },
 });
 
-export const { changeSort, addFilter, removeFilter, clearFilters } = filterSlice.actions;
+export const { changeSort, addFilter, removeFilter, clearFilters, setRange } = filterSlice.actions;
 
 export default filterSlice.reducer;

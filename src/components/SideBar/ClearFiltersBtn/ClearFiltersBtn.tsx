@@ -8,12 +8,12 @@ const ClearFiltersBtn = () => {
 
   return (
     <button
-      className="clearButton"
+      className="btn-98"
       onClick={() => {
         dispatch(clearFilters(true));
       }}
     >
-      Очистить
+      Сбросить
     </button>
   );
 };

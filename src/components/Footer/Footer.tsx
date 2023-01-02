@@ -12,13 +12,18 @@ const Footer: React.FC = () => {
         <nav className="footer__nav">
           <ul className="footer__list">
             <li className="footer__item">
-              <a href="https://github.com/gamesam88/online-store">
+              <a href="https://github.com/gamesam88">
                 <img src={githubIcon} alt="github" />
               </a>
             </li>
             <li className="footer__item">
               <a href="https://rs.school/js/">
                 <img src={rsIcon} alt="RS-school" />
+              </a>
+            </li>
+            <li className="footer__item">
+              <a href="https://github.com/DenisMezhuev">
+                <img src={githubIcon} alt="github" />
               </a>
             </li>
           </ul>

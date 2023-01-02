@@ -8,7 +8,7 @@ interface Ilogo {
 
 export function Logo({ eltClass }: Ilogo) {
   return (
-    <Link to="https://rs.school/js/" className={`logo ${eltClass}`}>
+    <Link to="/" className={`logo ${eltClass}`}>
       <img src={logoImg} alt="logo" />
     </Link>
   );
