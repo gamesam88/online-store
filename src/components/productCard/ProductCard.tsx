@@ -16,11 +16,13 @@ export function ProductCard({ product, id }: IProductProps) {
   const btnClasses = ["btn-class", btnClassName];
 
   return (
-    <Link to={`${id}`}>
+    <div>
       {
         <div className="card ">
-          <img src={product.thumbnail} alt={product.title} className="card-image" />
-          <p>{product.title}</p>
+          <Link to={`${id}`}>
+            <img src={product.thumbnail} alt={product.title} className="card-image" />
+            <p>{product.title}</p>
+          </Link>
           <span className="font-bold">{product.price}$</span>
           <button className={btnClasses.join(" ")} onClick={() => setDetails((prev) => !prev)}>
             {details ? "Hide details" : "Show details"}
@@ -36,6 +38,6 @@ export function ProductCard({ product, id }: IProductProps) {
           <AddProductToCart />
         </div>
       }
-    </Link>
+    </div>
   );
 }

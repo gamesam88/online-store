@@ -20,8 +20,8 @@ const SideBar: React.FC<PropsType> = ({ products }) => {
   const dispatch = useDispatch();
   const { clear, price, stock } = useSelector((state: RootState) => state.filter);
 
-  const priceElements = products.map((el) => el.price);
-  const stokElements = products.map((el) => el.stock);
+  const priceElements: number[] = products.map((el) => el.price);
+  const stokElements: number[] = products.map((el) => el.stock);
 
   const priceScope: number[] = findMinMax(priceElements);
   const stokScope: number[] = findMinMax(stokElements);
