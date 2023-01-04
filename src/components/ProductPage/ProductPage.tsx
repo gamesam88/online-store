@@ -11,7 +11,16 @@ const ProductPage: FC = () => {
 
   const [mainImg, setMainImg] = useState<string>();
 
-  console.log(prod);
+  const cartItem = prod && {
+    title: prod.title,
+    image: prod.thumbnail,
+    rating: prod.rating,
+    price: prod.price,
+    stock: prod.stock,
+    description: prod.description,
+    discountPercentage: prod.discountPercentage,
+    id: prod.id,
+  };
 
   useEffect(() => {
     setMainImg(prod?.thumbnail);
@@ -47,7 +56,7 @@ const ProductPage: FC = () => {
               <h3>О товаре: </h3>
               <p>{prod.description}</p>
               <div className="buttons-block">
-                <AddProductToCart />
+                <AddProductToCart cartItem={cartItem} />
               </div>
             </div>
           </div>
