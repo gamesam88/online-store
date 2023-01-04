@@ -1,17 +1,16 @@
 import React from "react";
-import "./ShoppingCart.scss";
 import cart from "./img/cart.png";
 import { Link } from "react-router-dom";
+import "./ShoppingCart.scss";
 
-interface ICart {
-  styleCart: string;
-}
-
-function ShoppingCart({ styleCart }: ICart) {
+function ShoppingCart() {
   return (
-    <Link to="/cart" className={`img__cart ${styleCart}`}>
-      <img src={cart} alt="cart" />
-    </Link>
+    <div className="img__cart">
+      <Link to="/cart">
+        <img src={cart} alt="cart" />
+      </Link>
+      <span>0</span>
+    </div>
   );
 }
 

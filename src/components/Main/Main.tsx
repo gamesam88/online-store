@@ -4,6 +4,7 @@ import { setProducts } from "../../redux/slices/productsSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/store";
 import Sorting from "./Sorting/Sorting";
+import { Search } from "./Search/Search";
 import axios from "axios";
 import "./Main.scss";
 import { Catalog } from "../catalog/Catalog";
@@ -35,7 +36,10 @@ const Main = () => {
     <main className="main">
       <SideBar products={products} />
       <div className="main__wrapper">
-        <Sorting />
+        <div className="catalog-top-bar">
+          <Search />
+          <Sorting />
+        </div>
         <Catalog products={products} />
       </div>
     </main>

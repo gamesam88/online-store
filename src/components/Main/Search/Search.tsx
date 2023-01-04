@@ -1,13 +1,9 @@
 import React from "react";
-import "./SearchHeader.scss";
+import "./Search.scss";
 import searchImg from "./img/search.png";
 import { useState } from "react";
 
-interface ISearch {
-  styleSearch: string;
-}
-
-export function SearchHeader({ styleSearch }: ISearch) {
+export function Search() {
   const [searchItem, setSearchItem] = useState(true);
 
   function changeSearch(): void {
@@ -18,7 +14,7 @@ export function SearchHeader({ styleSearch }: ISearch) {
     setSearchItem((prev) => !prev);
   }
   return (
-    <div className={styleSearch}>
+    <div>
       {searchItem === true ? (
         <div onClick={changeSearch}>
           <img src={searchImg} alt="searchImg" className="image__search" />

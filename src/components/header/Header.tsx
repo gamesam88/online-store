@@ -1,18 +1,15 @@
 import React from "react";
 import "./header.scss";
-import { Logo } from "./logo/logo";
-import NavHeader from "./NavHeader/NavHeader";
-import { SearchHeader } from "./SearchHeader/SearchHeader";
 import ShoppingCart from "./HeaderCart/ShoppingCart";
+import Logo from "./logo/logo";
 
 function Header() {
   return (
     <header className="header">
-      <div className="container header__container">
-        <Logo eltClass="header__logo" />
-        <NavHeader styleNav="header__navigation" />
-        <SearchHeader styleSearch="header__search" />
-        <ShoppingCart styleCart="header__cart" />
+      <div className=" header__container">
+        <Logo />
+        <h3>Total price: 0</h3>
+        <ShoppingCart />
       </div>
     </header>
   );
