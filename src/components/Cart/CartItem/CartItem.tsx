@@ -1,41 +1,50 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { IcartItem } from "../../../models/models";
+import { addProduct, removeProduct } from "../../../redux/slices/cartSlice";
 import "./CartItem.scss";
 
 export interface ICartItem {
   cartItem: IcartItem;
-  addProduct: (id: number) => void;
-  removeProduct: (id: number) => void;
+  count: number;
+  index: number;
 }
 
-const CartItem: React.FC<ICartItem> = ({ cartItem, addProduct, removeProduct }) => {
+const CartItem: React.FC<ICartItem> = ({ cartItem, count, index }) => {
+  const dispatch = useDispatch();
+
   return (
     <div className="cart-item">
       <div className="cart-item__wrapper">
         <div className="cart-item__id">
-          <span>{cartItem.id}</span>
+          <span>{index}</span>
         </div>
         <div className="cart-item__image">
           <img src={cartItem.image} alt="product image" />
         </div>
         <div className="cart-item__text-content">
-          <h4>{cartItem.title}</h4>
-          <span></span>
-          <p>props.description</p>
+          <h3>{cartItem.title}</h3>
+          <p>{cartItem.description}</p>
           <div>
-            <span>Rating:{cartItem.description}</span>
-            <span>Discount:{cartItem.discountPercentage}</span>
+            <span>Rating: {cartItem.rating}</span>
+            <span>Discount: {cartItem.discountPercentage}%</span>
           </div>
         </div>
         <div className="cart-item__controls">
           <div className="controls__wrapper">
-            <span>{cartItem.stock}</span>
+            <span>
+              <b>На складе:</b> {cartItem.stock - count} шт.
+            </span>
             <div className="controls__buttons">
-              <button onClick={() => addProduct(cartItem.id)}></button>
-              <span>1</span>
-              <button onClick={() => removeProduct(cartItem.id)}></button>
+              <button onClick={() => dispatch(addProduct({ cartItem: cartItem, amount: 1 }))}>+</button>
+              <span>
+                <b>{count}</b>
+              </span>
+              <button onClick={() => dispatch(removeProduct(cartItem.id))}>-</button>
             </div>
-            <span>{cartItem.price}</span>
+            <span>
+              <b>Итог:</b> {cartItem.price * count} $
+            </span>
           </div>
         </div>
       </div>

@@ -1,20 +1,14 @@
 import React from "react";
-import { IcartItem } from "../../models/models";
-
-//mport { useState } from "react"
-//import './productCard.css'
 
 interface IBtnElt {
   eltClass: string;
   btnText: string;
-  onClick?: () => void;
-  cartItem?: IcartItem;
-  count: number;
+  handler: () => void;
 }
 
-export function Btn({ eltClass, onClick, btnText }: IBtnElt) {
+export function Btn({ eltClass, handler, btnText }: IBtnElt) {
   return (
-    <button className={`btn btnStyle ${eltClass}`} onClick={onClick}>
+    <button className={`btn btnStyle ${eltClass}`} onClick={() => handler()}>
       {btnText}
     </button>
   );

@@ -15,6 +15,17 @@ export function ProductCard({ product, id }: IProductProps) {
   const btnClassName = details ? "add-yellow" : "add-blue";
   const btnClasses = ["btn-class", btnClassName];
 
+  const cartItem = product && {
+    title: product.title,
+    image: product.thumbnail,
+    rating: product.rating,
+    price: product.price,
+    stock: product.stock,
+    description: product.description,
+    discountPercentage: product.discountPercentage,
+    id: product.id,
+  };
+
   return (
     <div>
       {
@@ -35,7 +46,7 @@ export function ProductCard({ product, id }: IProductProps) {
               </p>
             </div>
           )}
-          <AddProductToCart />
+          <AddProductToCart cartItem={cartItem} />
         </div>
       }
     </div>

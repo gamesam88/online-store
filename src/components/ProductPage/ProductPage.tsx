@@ -7,24 +7,24 @@ import { AddProductToCart } from "../addProductToCart/addProductToCard";
 
 const ProductPage: FC = () => {
   const { id } = useParams();
-  const [prod, setProd] = useState<ProductType>();
+  const [product, setProd] = useState<ProductType>();
 
   const [mainImg, setMainImg] = useState<string>();
 
-  const cartItem = prod && {
-    title: prod.title,
-    image: prod.thumbnail,
-    rating: prod.rating,
-    price: prod.price,
-    stock: prod.stock,
-    description: prod.description,
-    discountPercentage: prod.discountPercentage,
-    id: prod.id,
+  const cartItem = product && {
+    title: product.title,
+    image: product.thumbnail,
+    rating: product.rating,
+    price: product.price,
+    stock: product.stock,
+    description: product.description,
+    discountPercentage: product.discountPercentage,
+    id: product.id,
   };
 
   useEffect(() => {
-    setMainImg(prod?.thumbnail);
-  }, [prod]);
+    setMainImg(product?.thumbnail);
+  }, [product]);
 
   useEffect(() => {
     axios.get(`https://dummyjson.com/products/${id}`).then((response) => setProd(response.data));
@@ -32,12 +32,12 @@ const ProductPage: FC = () => {
 
   return (
     <>
-      {prod && (
+      {product && (
         <div className="productPage">
           <div className="productPage__container">
             <div className="productPage__images-block">
               <div className="side-images">
-                {prod.images.map((el: string, id: number) => (
+                {product.images.map((el: string, id: number) => (
                   <img
                     src={el}
                     key={id}
@@ -51,10 +51,10 @@ const ProductPage: FC = () => {
               <img src={mainImg} alt="image" />
             </div>
             <div className="productPage__text-block">
-              <h2>{prod.title}</h2>
-              <h3>{`Цена: ${prod.price} $`}</h3>
+              <h2>{product.title}</h2>
+              <h3>{`Цена: ${product.price} $`}</h3>
               <h3>О товаре: </h3>
-              <p>{prod.description}</p>
+              <p>{product.description}</p>
               <div className="buttons-block">
                 <AddProductToCart cartItem={cartItem} />
               </div>
