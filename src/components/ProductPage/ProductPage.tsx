@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import "./ProductPage.scss";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { ProductType } from "../../models/models";
 import { AddProductToCart } from "../addProductToCart/addProductToCard";
@@ -34,27 +34,52 @@ const ProductPage: FC = () => {
     <>
       {product && (
         <div className="productPage">
+          <div className="crambs">
+            <span>
+              <Link to="/">Catalog</Link>
+            </span>
+
+            <span>{product.category}</span>
+            <span>{product.brand}</span>
+            <span>{product.title}</span>
+          </div>
           <div className="productPage__container">
             <div className="productPage__images-block">
               <div className="side-images">
                 {product.images.map((el: string, id: number) => (
-                  <img
-                    src={el}
-                    key={id}
-                    alt="image"
-                    onClick={() => {
-                      setMainImg(el);
-                    }}
-                  ></img>
+                  <div key={id} className="side-images__wrapper">
+                    <img
+                      src={el}
+                      alt="image"
+                      onClick={() => {
+                        setMainImg(el);
+                      }}
+                    ></img>
+                  </div>
                 ))}
               </div>
-              <img src={mainImg} alt="image" />
+              <div className="productPage__main-image">
+                <img src={mainImg} alt="image" />
+              </div>
             </div>
             <div className="productPage__text-block">
               <h2>{product.title}</h2>
               <h3>{`Цена: ${product.price} $`}</h3>
-              <h3>О товаре: </h3>
-              <p>{product.description}</p>
+              <h3>
+                О товаре: <span>{product.description}</span>
+              </h3>
+              <h3>
+                Рейтинг: <span>{product.rating}</span>
+              </h3>
+              <h3>
+                Скидка: <span>{product.discountPercentage}</span>
+              </h3>
+              <h3>
+                Категория: <span>{product.category}</span>
+              </h3>
+              <h3>
+                Бренд: <span>{product.brand}</span>
+              </h3>
               <div className="buttons-block">
                 <AddProductToCart cartItem={cartItem} />
               </div>

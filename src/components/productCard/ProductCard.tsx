@@ -30,7 +30,7 @@ export function ProductCard({ product, id }: IProductProps) {
     <div>
       {
         <div className="card ">
-          <Link to={`${id}`}>
+          <Link to={`product/${id}`}>
             <img src={product.thumbnail} alt={product.title} className="card-image" />
             <p>{product.title}</p>
           </Link>

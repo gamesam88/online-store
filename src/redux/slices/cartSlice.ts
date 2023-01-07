@@ -29,10 +29,16 @@ export const cartSlice = createSlice({
       );
 
       if (index !== -1) {
+        if (state.productsInCart[index].amount + action.payload.amount > state.productsInCart[index].cartItem.stock) {
+          return;
+        }
         state.productsInCart[index].amount += action.payload.amount;
         state.totalPrice += action.payload.amount * action.payload.cartItem.price;
         state.totalAmount += action.payload.amount;
       } else {
+        if (action.payload.amount > action.payload.cartItem.stock) {
+          return;
+        }
         state.productsInCart = [...state.productsInCart, action.payload];
         state.totalPrice += action.payload.amount * action.payload.cartItem.price;
         state.totalAmount += action.payload.amount;

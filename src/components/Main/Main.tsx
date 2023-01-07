@@ -22,10 +22,14 @@ const Main = () => {
   const dispatch = useDispatch();
 
   async function myFetch() {
-    const url = "https://dummyjson.com/products?limit=100";
-    axios.get<Resp>(url).then((response) => {
-      dispatch(setProducts(response.data.products));
-    });
+    try {
+      const url = "https://dummyjson.com/products?limit=100";
+      axios.get<Resp>(url).then((response) => {
+        dispatch(setProducts(response.data.products));
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(() => {
@@ -33,16 +37,22 @@ const Main = () => {
   }, []);
 
   return (
-    <main className="main">
-      <SideBar products={products} />
-      <div className="main__wrapper">
-        <div className="catalog-top-bar">
-          <Search />
-          <Sorting />
-        </div>
-        <Catalog products={products} />
-      </div>
-    </main>
+    <>
+      {products.length ? (
+        <main className="main">
+          <SideBar products={products} />
+          <div className="main__wrapper">
+            <div className="catalog-top-bar">
+              <Search />
+              <Sorting />
+            </div>
+            <Catalog products={products} />
+          </div>
+        </main>
+      ) : (
+        <h3>Загрузка...</h3>
+      )}
+    </>
   );
 };
 
