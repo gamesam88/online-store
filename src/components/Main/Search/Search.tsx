@@ -1,34 +1,79 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import "./Search.scss";
-import searchImg from "./img/search.png";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { setSearchValue } from "../../../redux/slices/filterSlice";
 
 export function Search() {
-  const [searchItem, setSearchItem] = useState(true);
+  const dispatch = useDispatch();
 
-  function changeSearch(): void {
-    setSearchItem((prev) => !prev);
-  }
+  const [value, setValue] = useState<string>("");
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  function changeInput(): void {
-    setSearchItem((prev) => !prev);
-  }
+  const onClickClear = () => {
+    dispatch(setSearchValue);
+    setValue("");
+    inputRef.current?.focus();
+  };
+
+  // const updateSearchValue = useCallback();
+
+  const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value);
+    // updateSearchValue(event.target.value);
+  };
   return (
-    <div>
-      {searchItem === true ? (
-        <div onClick={changeSearch}>
-          <img src={searchImg} alt="searchImg" className="image__search" />
-        </div>
-      ) : (
-        <div
-          onKeyDown={(ev): void => {
-            if (ev.keyCode === 13) {
-              changeInput();
-            }
-          }}
+    <div className="search__root">
+      <svg
+        className="search__icon"
+        enableBackground="new 0 0 32 32"
+        id="EditableLine"
+        version="1.1"
+        viewBox="0 0 32 32"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="14"
+          cy="14"
+          fill="none"
+          id="XMLID_42_"
+          r="9"
+          stroke="#000000"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeMiterlimit="10"
+          strokeWidth="2"
+        />
+        <line
+          fill="none"
+          id="XMLID_44_"
+          stroke="#000000"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeMiterlimit="10"
+          strokeWidth="2"
+          x1="27"
+          x2="20.366"
+          y1="27"
+          y2="20.366"
+        />
+      </svg>
+      <input
+        ref={inputRef}
+        value={value}
+        onChange={onChangeInput}
+        className="search__input"
+        placeholder="Поиск товаров..."
+      />
+      {value && (
+        <svg
+          onClick={onClickClear}
+          className="search__clearIcon"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <input type="text" className="inputStyle" />
-        </div>
+          <path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" />
+        </svg>
       )}
     </div>
   );
