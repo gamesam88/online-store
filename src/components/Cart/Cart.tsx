@@ -1,32 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./Cart.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import CartItem from "./CartItem/CartItem";
 import { ProductInCartType } from "../../redux/slices/cartSlice";
-import ModalWindow from "../modalWindow/ModalWindow";
+import { setModalState } from "../../redux/slices/productsSlice";
 
 const Cart = () => {
   const { productsInCart, totalAmount, totalPrice } = useSelector((state: RootState) => state.cart);
   const [cartElements, setCartElements] = useState<ProductInCartType[]>();
-
-  const [modal, setModal] = useState(false);
-
-  const handleModal = (e: Event) => {
-    if (!(e.target instanceof HTMLElement) || !(e.currentTarget instanceof HTMLElement)) return;
-    const target = e.target;
-    if (target.classList.contains("modal-wrapper")) {
-      setModal(false);
-    }
-  };
-
-  useEffect(() => {
-    const modalWrapper = document.querySelector(".modal-wrapper");
-    modalWrapper?.addEventListener("click", handleModal);
-    return () => {
-      modalWrapper?.removeEventListener("click", handleModal);
-    };
-  }, []);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setCartElements(productsInCart);
@@ -34,7 +17,6 @@ const Cart = () => {
 
   return (
     <div className="cart">
-      <ModalWindow modal={!modal ? "modal-wrapper__block" : ""} />
       <div className="cart__list">
         {cartElements?.length ? (
           <ul className="cart__items">
@@ -62,7 +44,7 @@ const Cart = () => {
           </div>
           <button
             onClick={() => {
-              setModal(!modal);
+              dispatch(setModalState(true));
             }}
           >
             Оплатить

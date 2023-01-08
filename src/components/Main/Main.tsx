@@ -45,7 +45,7 @@ const Main = () => {
           <div className="main__wrapper">
             <div className="catalog-top-bar">
               <Search />
-              {foundAmount < 100 ? <span>Найдено: {foundAmount}</span> : ""}
+              <span>Найдено: {foundAmount}</span>
               <Sorting />
             </div>
             <Catalog products={products} />

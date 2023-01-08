@@ -4,8 +4,11 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { ProductType } from "../../models/models";
 import { AddProductToCart } from "../addProductToCart/addProductToCard";
+import { useDispatch } from "react-redux";
+import { setModalState } from "../../redux/slices/productsSlice";
 
 const ProductPage: FC = () => {
+  const dispatch = useDispatch();
   const { id } = useParams();
   const [product, setProd] = useState<ProductType>();
 
@@ -81,6 +84,17 @@ const ProductPage: FC = () => {
                 Бренд: <span>{product.brand}</span>
               </h3>
               <div className="buttons-block">
+                <button
+                  className="btnStyle"
+                  onClick={() => {
+                    dispatch(setModalState(true));
+                  }}
+                >
+                  <Link to="/cart">
+                    <span>Купить сейчас</span>
+                  </Link>
+                </button>
+
                 <AddProductToCart cartItem={cartItem} />
               </div>
             </div>

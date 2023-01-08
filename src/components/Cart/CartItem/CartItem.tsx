@@ -28,6 +28,7 @@ const CartItem: React.FC<ICartItem> = ({ cartItem, count, index }) => {
           <div>
             <span>Rating: {cartItem.rating}</span>
             <span>Discount: {cartItem.discountPercentage}%</span>
+            <span>Price: {cartItem.price}$</span>
           </div>
         </div>
         <div className="cart-item__controls">
