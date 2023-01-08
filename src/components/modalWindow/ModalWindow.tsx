@@ -1,18 +1,16 @@
 import React from "react";
-import "./ModalWindow";
 import ModalContent from "./modalContent/ModalContent";
-//import {WrapperWindow} from "./wrapperWindow/WrapperWindow";
 
+type PropsType = {
+  modal: string;
+};
 
-function ModalWindow(){
-   
-
-    return(
-        //  modal-wrapper__block add if className
-        <div className="modal-wrapper">
-           <ModalContent />
-        </div>
-    )
+function ModalWindow(props: PropsType) {
+  return (
+    <div className={"modal-wrapper" + " " + props.modal}>
+      <ModalContent />
+    </div>
+  );
 }
 
 export default ModalWindow;

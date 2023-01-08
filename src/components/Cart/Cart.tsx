@@ -4,11 +4,29 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import CartItem from "./CartItem/CartItem";
 import { ProductInCartType } from "../../redux/slices/cartSlice";
+import ModalWindow from "../modalWindow/ModalWindow";
 
 const Cart = () => {
   const { productsInCart, totalAmount, totalPrice } = useSelector((state: RootState) => state.cart);
-
   const [cartElements, setCartElements] = useState<ProductInCartType[]>();
+
+  const [modal, setModal] = useState(false);
+
+  const handleModal = (e: Event) => {
+    if (!(e.target instanceof HTMLElement) || !(e.currentTarget instanceof HTMLElement)) return;
+    const target = e.target;
+    if (target.classList.contains("modal-wrapper")) {
+      setModal(false);
+    }
+  };
+
+  useEffect(() => {
+    const modalWrapper = document.querySelector(".modal-wrapper");
+    modalWrapper?.addEventListener("click", handleModal);
+    return () => {
+      modalWrapper?.removeEventListener("click", handleModal);
+    };
+  }, []);
 
   useEffect(() => {
     setCartElements(productsInCart);
@@ -16,6 +34,7 @@ const Cart = () => {
 
   return (
     <div className="cart">
+      <ModalWindow modal={!modal ? "modal-wrapper__block" : ""} />
       <div className="cart__list">
         {cartElements?.length ? (
           <ul className="cart__items">
@@ -41,7 +60,13 @@ const Cart = () => {
             <p>Цена всех товаров:</p>
             <span>{totalPrice} $</span>
           </div>
-          <button>Оплатить</button>
+          <button
+            onClick={() => {
+              setModal(!modal);
+            }}
+          >
+            Оплатить
+          </button>
         </div>
       </div>
     </div>
