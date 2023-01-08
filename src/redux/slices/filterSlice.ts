@@ -8,6 +8,8 @@ export interface FilterState {
   clear: boolean;
   price: number[];
   stock: number[];
+  foundAmount: number;
+  searchValue: string;
 }
 
 const initialState = {
@@ -17,12 +19,22 @@ const initialState = {
   clear: false,
   price: [10, 1749],
   stock: [2, 152],
+  foundAmount: 0,
+  searchValue: "",
 };
 
 export const filterSlice = createSlice({
   name: "filter",
   initialState,
   reducers: {
+    setSearchValue: (state, action: PayloadAction<string>) => {
+      state.searchValue = action.payload;
+    },
+
+    findProducts: (state, action: PayloadAction<number>) => {
+      state.foundAmount = action.payload;
+    },
+
     changeSort: (state, action: PayloadAction<string>) => {
       state.sort = action.payload;
     },
@@ -82,6 +94,7 @@ export const filterSlice = createSlice({
   },
 });
 
-export const { changeSort, addFilter, removeFilter, clearFilters, setRange } = filterSlice.actions;
+export const { changeSort, addFilter, removeFilter, clearFilters, setRange, findProducts, setSearchValue } =
+  filterSlice.actions;
 
 export default filterSlice.reducer;

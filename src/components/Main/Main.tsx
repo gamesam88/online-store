@@ -19,6 +19,7 @@ type Resp = {
 
 const Main = () => {
   const { products } = useSelector((state: RootState) => state.products);
+  const { foundAmount } = useSelector((state: RootState) => state.filter);
   const dispatch = useDispatch();
 
   async function myFetch() {
@@ -44,6 +45,7 @@ const Main = () => {
           <div className="main__wrapper">
             <div className="catalog-top-bar">
               <Search />
+              {foundAmount < 100 ? <span>Найдено: {foundAmount}</span> : ""}
               <Sorting />
             </div>
             <Catalog products={products} />
