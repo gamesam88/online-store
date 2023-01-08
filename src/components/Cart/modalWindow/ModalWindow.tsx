@@ -9,7 +9,7 @@ function ModalWindow(){
 
     return(
         //  modal-wrapper__block add if className
-        <div className="modal-wrapper ">
+        <div className="modal-wrapper modal-wrapper__block">
            <ModalContent />
         </div>
     )
