@@ -84,11 +84,6 @@ img {
   margin-right: auto;
 }
 .catalog-block {
-/*
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 33px;
-  */
 
   display: flex;
   flex-wrap: wrap;
