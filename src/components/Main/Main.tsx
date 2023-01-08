@@ -10,6 +10,7 @@ import "./Main.scss";
 import { Catalog } from "../catalog/Catalog";
 import SideBar from "../SideBar/SideBar";
 
+
 type Resp = {
   products: ProductType[];
   total: number;
