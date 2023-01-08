@@ -1,21 +1,15 @@
 import React from "react";
 
-//mport { useState } from "react"
-//import './productCard.css'
-
 interface IBtnElt {
   eltClass: string;
   btnText: string;
-  onClick?: () => void;
-};
+  handler: () => void;
+}
 
-export function Btn ({eltClass, onClick, btnText}: IBtnElt) {
+export function Btn({ eltClass, handler, btnText }: IBtnElt) {
   return (
-    <button
-        className= {`btn btnStyle ${eltClass}`}
-        onClick = {onClick}
-        >
-        {btnText}
+    <button className={`btn btnStyle ${eltClass}`} onClick={() => handler()}>
+      {btnText}
     </button>
-  )
-};
+  );
+}

@@ -11,3 +11,14 @@ export type ProductType = {
   thumbnail: string;
   images: string[];
 };
+
+export interface IcartItem {
+  title: string;
+  image: string;
+  rating: number;
+  price: number;
+  stock: number;
+  description: string;
+  discountPercentage: number;
+  id: number;
+}
