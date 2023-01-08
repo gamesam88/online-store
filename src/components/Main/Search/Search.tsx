@@ -1,26 +1,28 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./Search.scss";
-import { useState, useRef } from "react";
 import { setSearchValue } from "../../../redux/slices/filterSlice";
+import { RootState } from "../../../redux/store";
 
 export function Search() {
   const dispatch = useDispatch();
 
+  const { searchValue } = useSelector((state: RootState) => state.filter);
+
   const [value, setValue] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
 
+  useEffect(() => {
+    setValue(searchValue);
+  }, [searchValue]);
+
   const onClickClear = () => {
-    dispatch(setSearchValue);
-    setValue("");
+    dispatch(setSearchValue(""));
     inputRef.current?.focus();
   };
 
-  // const updateSearchValue = useCallback();
-
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
-    // updateSearchValue(event.target.value);
+    dispatch(setSearchValue(event.target.value));
   };
   return (
     <div className="search__root">

@@ -48,3 +48,8 @@ export const findMinMax: TfindMinMax = (arr) => {
   const max = Math.max(...arr.map((el) => el));
   return [min, max];
 };
+
+export function objectFilter(obj: ProductType, value: string) {
+  const items = Array.from(Object.values(obj));
+  return items.join(" ").toUpperCase().indexOf(value.toUpperCase()) != -1 ? true : false;
+}
