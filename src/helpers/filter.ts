@@ -23,16 +23,16 @@ export const sortHelper = (value: string, products: ProductType[]): ProductType[
     case "reversePrice":
       return result.sort((a, b) => b.price - a.price);
       break;
-    case "rating":
+    case "reverseRating":
       return result.sort((a, b) => a.rating - b.rating);
       break;
-    case "reverseRating":
+    case "rating":
       return result.sort((a, b) => b.rating - a.rating);
       break;
-    case "discount":
+    case "reverseDiscount":
       return result.sort((a, b) => a.discountPercentage - b.discountPercentage);
       break;
-    case "reverseDiscount":
+    case "discount":
       return result.sort((a, b) => b.discountPercentage - a.discountPercentage);
       break;
     default:
