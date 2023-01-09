@@ -51,9 +51,7 @@ const Main = () => {
               <ViewMode />
             </div>
             <Catalog products={products} />
-            
           </div>
-          
         </main>
       ) : (
         <h3>Загрузка...</h3>

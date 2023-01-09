@@ -95,6 +95,7 @@ img {
   background: #21d1e1;
   border-radius: 8px;
   border: 0;
+  cursor: pointer;
 }
 
 .modal-wrapper {
@@ -289,52 +290,52 @@ img {
   display: none;
 }
 
-.view-mode{
+.view-mode {
   width: 110px;
   height: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.small, .big{
+.small,
+.big {
   width: 37px;
   height: 37px;
   border: 1px solid rgb(4, 34, 167);
   display: flex;
+  border-radius: 4px;
 }
-.smallBigActive3px{
+.smallBigActive3px {
   border: 3px solid rgb(4, 34, 167);
 }
-.smallBigActive1px{
+.smallBigActive1px {
   border: 1px solid rgb(4, 34, 167);
 }
 
-.small{
- 
-  .small-item{
+.small {
+  .small-item {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-items: stretch;
     grid-gap: 2px;
     margin: 2px;
     width: 90%;
-    div{
+    div {
       width: 5px;
       height: 5px;
       border: 1px solid rgb(4, 34, 167);
     }
   }
 }
-.big{
-  
-  .big-item{
+.big {
+  .big-item {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-items: stretch;
     grid-gap: 2px;
     margin: 2px;
     width: 90%;
-    div{
+    div {
       width: 5px;
       height: 5px;
       border: 1px solid rgb(4, 34, 167);
@@ -342,7 +343,30 @@ img {
   }
 }
 
-
-.card__width{
+.card__width {
   width: 200px;
+}
+
+.controls__buttons__page {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  width: 100px;
+  height: 40px;
+  border: 1px solid rgba(51, 51, 51, 0.1);
+  border-radius: 8px;
+  color: rgba(63, 102, 207, 0.962);
+
+  button {
+    width: 30px;
+    height: 30px;
+    appearance: none;
+    border: none;
+    background: #fff;
+    color: rgba(63, 102, 207, 0.962);
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 20px;
+  }
 }

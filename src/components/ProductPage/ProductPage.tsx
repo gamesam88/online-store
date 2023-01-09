@@ -6,12 +6,12 @@ import { ProductType } from "../../models/models";
 import { AddProductToCart } from "../addProductToCart/addProductToCard";
 import { useDispatch } from "react-redux";
 import { setModalState } from "../../redux/slices/productsSlice";
+import { addProduct } from "../../redux/slices/cartSlice";
 
 const ProductPage: FC = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [product, setProd] = useState<ProductType>();
-
   const [mainImg, setMainImg] = useState<string>();
 
   const cartItem = product && {
@@ -26,12 +26,12 @@ const ProductPage: FC = () => {
   };
 
   useEffect(() => {
-    setMainImg(product?.thumbnail);
-  }, [product]);
-
-  useEffect(() => {
     axios.get(`https://dummyjson.com/products/${id}`).then((response) => setProd(response.data));
   }, [id]);
+
+  useEffect(() => {
+    setMainImg(product?.thumbnail);
+  }, [product]);
 
   return (
     <>
@@ -87,6 +87,9 @@ const ProductPage: FC = () => {
                 <button
                   className="btnStyle"
                   onClick={() => {
+                    if (cartItem) {
+                      dispatch(addProduct({ cartItem: cartItem, amount: 1 }));
+                    }
                     dispatch(setModalState(true));
                   }}
                 >
@@ -94,7 +97,6 @@ const ProductPage: FC = () => {
                     <span>Купить сейчас</span>
                   </Link>
                 </button>
-
                 <AddProductToCart cartItem={cartItem} />
               </div>
             </div>

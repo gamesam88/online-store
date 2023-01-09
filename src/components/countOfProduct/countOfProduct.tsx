@@ -1,19 +1,26 @@
 import React from "react";
-import './countOfProduct.scss'
+import { useDispatch } from "react-redux";
+import { IcartItem } from "../../models/models";
+import { addProduct, removeProduct } from "../../redux/slices/cartSlice";
+import "./countOfProduct.scss";
 
-interface ICount {
-  decreaseCount: () => void
-  increaseCount: () => void
-  count: number
+interface IProps {
+  cartItem: IcartItem;
+  count: number;
+  class: string;
 }
 
-export function CountOfProduct ({decreaseCount, increaseCount, count}: ICount) {
-
+const CountOfProduct: React.FC<IProps> = (props) => {
+  const dispatch = useDispatch();
   return (
-    <div className="container__count">
-      <span onClick={decreaseCount}>-</span>
-      <span>{count}</span>
-      <span onClick={increaseCount}>+</span>
+    <div className={props.class}>
+      <button onClick={() => dispatch(addProduct({ cartItem: props.cartItem, amount: 1 }))}>+</button>
+      <span>
+        <b>{props.count}</b>
+      </span>
+      <button onClick={() => dispatch(removeProduct(props.cartItem.id))}>-</button>
     </div>
-  )
-}
+  );
+};
+
+export default CountOfProduct;

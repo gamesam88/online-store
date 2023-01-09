@@ -1,7 +1,6 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import { IcartItem } from "../../../models/models";
-import { addProduct, removeProduct } from "../../../redux/slices/cartSlice";
+import CountOfProduct from "../../countOfProduct/countOfProduct";
 import "./CartItem.scss";
 
 export interface ICartItem {
@@ -11,8 +10,6 @@ export interface ICartItem {
 }
 
 const CartItem: React.FC<ICartItem> = ({ cartItem, count, index }) => {
-  const dispatch = useDispatch();
-
   return (
     <div className="cart-item">
       <div className="cart-item__wrapper">
@@ -36,13 +33,7 @@ const CartItem: React.FC<ICartItem> = ({ cartItem, count, index }) => {
             <span>
               <b>На складе:</b> {cartItem.stock - count} шт.
             </span>
-            <div className="controls__buttons">
-              <button onClick={() => dispatch(addProduct({ cartItem: cartItem, amount: 1 }))}>+</button>
-              <span>
-                <b>{count}</b>
-              </span>
-              <button onClick={() => dispatch(removeProduct(cartItem.id))}>-</button>
-            </div>
+            <CountOfProduct cartItem={cartItem} count={count} class="controls__buttons" />
             <span>
               <b>Итог:</b> {cartItem.price * count} $
             </span>

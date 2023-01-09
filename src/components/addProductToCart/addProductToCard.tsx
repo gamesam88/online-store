@@ -1,17 +1,19 @@
 import React, { useEffect } from "react";
 import "./addProductToCard.scss";
-import { CountOfProduct } from "../countOfProduct/countOfProduct";
 import { Btn } from "../btns/btn";
 import { useState } from "react";
 import { IcartItem } from "../../models/models";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../redux/slices/cartSlice";
+import { RootState } from "../../redux/store";
+import CountOfProduct from "../countOfProduct/countOfProduct";
 
 interface IProps {
   cartItem?: IcartItem;
 }
 
 export function AddProductToCart(props: IProps) {
+  const productsInCart = useSelector((state: RootState) => state.cart.productsInCart);
   const dispatch = useDispatch();
 
   const [item, setitem] = useState<IcartItem>();
@@ -21,28 +23,22 @@ export function AddProductToCart(props: IProps) {
     }
   }, [props.cartItem]);
 
-  const [count, setCount] = useState(1);
-
-  const decreaseCount = (): void => {
-    setCount((el) => (el > 1 ? (el -= 1) : 1));
-  };
-
-  const increaseCount = (): void => {
-    setCount((el) => (el += 1));
-  };
-
   const addToCartHandler = () => {
     if (item) {
-      dispatch(addProduct({ cartItem: item, amount: count }));
+      dispatch(addProduct({ cartItem: item, amount: 1 }));
     }
     return;
   };
-  const blockBtn = count ? "" : "blockBtn";
-  const styleBtn = ["btn__addToCart", blockBtn];
+
+  const count = item && productsInCart.find((el) => el.cartItem.id === item.id)?.amount;
+
   return (
     <div className="productToCart">
-      <CountOfProduct count={count} decreaseCount={decreaseCount} increaseCount={increaseCount} />
-      <Btn eltClass={styleBtn.join(" ")} btnText="В корзину" handler={addToCartHandler} />
+      {count ? (
+        <CountOfProduct cartItem={item} count={count} class="controls__buttons" />
+      ) : (
+        <Btn eltClass="btn__addToCart" btnText="В корзину" handler={addToCartHandler} />
+      )}
     </div>
   );
 }
