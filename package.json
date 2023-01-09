@@ -1,5 +1,6 @@
 {
   "name": "online-store",
+  "homepage": "https://gamesam88.github.io/online-store",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -25,7 +26,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --fix"
+    "lint": "eslint --fix",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -54,6 +57,7 @@
     "eslint": "^8.30.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.31.11",
+    "gh-pages": "^4.0.0",
     "prettier": "^2.8.1",
     "sass": "^1.57.0"
   }
