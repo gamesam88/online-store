@@ -9,6 +9,7 @@ import axios from "axios";
 import "./Main.scss";
 import { Catalog } from "../catalog/Catalog";
 import SideBar from "../SideBar/SideBar";
+import ViewMode from "./viewMode/ViewMode";
 
 type Resp = {
   products: ProductType[];
@@ -47,9 +48,12 @@ const Main = () => {
               <Search />
               <span>Найдено: {foundAmount}</span>
               <Sorting />
+              <ViewMode />
             </div>
             <Catalog products={products} />
+            
           </div>
+          
         </main>
       ) : (
         <h3>Загрузка...</h3>

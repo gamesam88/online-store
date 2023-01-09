@@ -4,6 +4,7 @@ import "./productCard.scss";
 import { AddProductToCart } from "../addProductToCart/addProductToCard";
 import { ProductType } from "../../models/models";
 import { Link } from "react-router-dom";
+
 interface IProductProps {
   product: ProductType;
   id: number;
