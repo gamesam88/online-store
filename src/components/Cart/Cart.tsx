@@ -66,7 +66,11 @@ const Cart = () => {
           </div>
           <button
             onClick={() => {
-              dispatch(setModalState(true));
+              if (totalPrice) {
+                dispatch(setModalState(true));
+              } else {
+                alert("Корзина пуста");
+              }
             }}
           >
             Оплатить
