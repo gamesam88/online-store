@@ -14,9 +14,9 @@ type PropsType = {
 export function Catalog(props: PropsType) {
   const dispatch = useDispatch();
   const { brands, categories, sort, price, stock, searchValue } = useSelector((state: RootState) => state.filter);
-  const [searchParams, setSearchParams] = useSearchParams("");
+  const [searchParams, setSearchParams] = useSearchParams("/online-store");
 
-  const prodQuery = searchParams.get("/") || "";
+  const prodQuery = searchParams.get("/online-store") || "";
   console.log(prodQuery);
 
   const priceQuery = `${price[0]}↕${price[1]}`;

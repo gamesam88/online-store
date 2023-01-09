@@ -30,7 +30,7 @@ function App() {
   };
 
   useEffect(() => {
-    const modalWrapper = document.querySelector(".modal-wrapper");
+    const modalWrapper = document.querySelector(".modal-wrapper") as HTMLElement;
     modalWrapper?.addEventListener("click", handleModal);
     return () => {
       modalWrapper?.removeEventListener("click", handleModal);
@@ -43,10 +43,10 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/product/:id" element={<ProductPage />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/online-store" element={<Main />} />
+          <Route path="/online-store/product/:id" element={<ProductPage />} />
+          <Route path="/online-store/cart" element={<Cart />} />
+          <Route path="/online-store/*" element={<NotFound />} />
         </Routes>
         <Footer />
       </Router>

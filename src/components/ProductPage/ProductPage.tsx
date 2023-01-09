@@ -39,7 +39,7 @@ const ProductPage: FC = () => {
         <div className="productPage">
           <div className="crambs">
             <span>
-              <Link to="/">Catalog</Link>
+              <Link to="/online-store">Catalog</Link>
             </span>
 
             <span>{product.category}</span>
@@ -93,7 +93,7 @@ const ProductPage: FC = () => {
                     dispatch(setModalState(true));
                   }}
                 >
-                  <Link to="/cart">
+                  <Link to="/online-store/cart">
                     <span>Купить сейчас</span>
                   </Link>
                 </button>

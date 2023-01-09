@@ -10,7 +10,7 @@ type TProps = {
 function ShoppingCart({ totalAmount }: TProps) {
   return (
     <div className="img__cart">
-      <Link to="/cart">
+      <Link to="/online-store/cart">
         <img src={cart} alt="cart" />
       </Link>
       <span>{totalAmount}</span>
