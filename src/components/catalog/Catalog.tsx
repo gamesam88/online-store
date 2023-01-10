@@ -29,11 +29,13 @@ export function Catalog(props: PropsType) {
   const filteredProducts = fiterHelper(props.products, brands, categories);
   const sortProducts = sortHelper(sort, filteredProducts);
   const rangeProducts = sortProducts.filter(
-    (el) => (el.price >= price[0] && el.price <= price[1] && el.stock >= stock[0]) || el.stock <= stock[1]
+    (el) => el.price >= price[0] && el.price <= price[1] && el.stock >= stock[0] && el.stock <= stock[1]
   );
   const searchProducts = rangeProducts.filter((el) => objectFilter(el, searchValue));
 
   const finalArr = searchValue ? searchProducts : rangeProducts;
+
+  console.log(rangeProducts);
 
   useEffect(() => {
     dispatch(findProducts(finalArr.length));

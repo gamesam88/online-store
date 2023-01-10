@@ -98,6 +98,10 @@ img {
   cursor: pointer;
 }
 
+.btnStyle:hover {
+  opacity: 0.9;
+}
+
 .modal-wrapper {
   z-index: 99;
   position: fixed;

@@ -6,26 +6,35 @@ import CartItem from "./CartItem/CartItem";
 import { ProductInCartType } from "../../redux/slices/cartSlice";
 import { setModalState } from "../../redux/slices/productsSlice";
 
+enum EPromo {
+  "RS" = 10,
+  "EPM" = 15,
+}
+
 const Cart = () => {
   const { productsInCart, totalAmount, totalPrice } = useSelector((state: RootState) => state.cart);
   const [cartElements, setCartElements] = useState<ProductInCartType[]>();
   const dispatch = useDispatch();
 
   const [promoValue, setpromoValue] = useState<string>("");
-  const [discount, setDiscount] = useState<boolean>(false);
+  const [discount, setDiscount] = useState<number>(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setpromoValue(event.target.value);
   };
 
-  const finalPrice = discount ? totalPrice * 0.9 : totalPrice;
+  const percent = (100 - discount) * 0.01;
+
+  const finalPrice = discount ? totalPrice * percent : totalPrice;
 
   useEffect(() => {
-    if (promoValue === "PROMO") {
-      setDiscount(true);
+    if (promoValue === "RS") {
+      setDiscount(EPromo["RS"]);
+    } else if (promoValue === "EPM") {
+      setDiscount(EPromo["EPM"]);
     } else {
-      setDiscount(false);
+      setDiscount(0);
     }
   }, [promoValue]);
 
@@ -59,10 +68,11 @@ const Cart = () => {
             <span>{totalAmount} шт.</span>
             <p>Цена всех товаров:</p>
             <span>{finalPrice} $</span>
-            {discount ? <p className="payment__text-discount">Скидка: -10%</p> : ""}
+            {discount ? <p className="payment__text-discount">Скидка: -{discount}%</p> : ""}
           </div>
           <div className="discount">
             <input ref={inputRef} value={promoValue} type="text" placeholder="PROMO" onChange={onChangeInput} />
+            <span>Test promo: RS, EPM</span>
           </div>
           <button
             onClick={() => {

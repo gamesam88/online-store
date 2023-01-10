@@ -28,7 +28,7 @@ export function ProductCard({ product, id }: IProductProps) {
           <h4>{product.title}</h4>
           <div>
             <p>
-              Цена: <span className="font-bold">{product.price}$</span>
+              Цена: <span className="font-bold">{product.price} $</span>
             </p>
             <p>
               Рейтинг: <span style={{ fontWeight: "bold" }}>{product.rating}</span>
