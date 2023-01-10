@@ -17,7 +17,10 @@ export function Catalog(props: PropsType) {
   const [searchParams, setSearchParams] = useSearchParams("/online-store");
 
   const prodQuery = searchParams.get("/online-store") || "";
-  console.log(prodQuery);
+
+  useEffect(() => {
+    setSearchParams(prodQuery);
+  }, [prodQuery]);
 
   const priceQuery = `${price[0]}↕${price[1]}`;
   const stockQuery = `${stock[0]}↕${stock[1]}`;
