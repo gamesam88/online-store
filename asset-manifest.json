@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/online-store/static/css/main.0cb91a12.css",
-    "main.js": "/online-store/static/js/main.0ddeab1b.js",
+    "main.css": "/online-store/static/css/main.8fae1e1c.css",
+    "main.js": "/online-store/static/js/main.d9ba731f.js",
     "static/media/rs_school_js.svg": "/online-store/static/media/rs_school_js.ad178c0df28bc133be34b982d62f431d.svg",
-    "static/media/github.svg": "/online-store/static/media/github.4164c18aa1591fb7c65bf0ce0b51cad2.svg",
+    "static/media/github.svg": "/online-store/static/media/github.cde8d8b4859df40d244fa14abfa2a458.svg",
     "index.html": "/online-store/index.html",
-    "main.0cb91a12.css.map": "/online-store/static/css/main.0cb91a12.css.map",
-    "main.0ddeab1b.js.map": "/online-store/static/js/main.0ddeab1b.js.map"
+    "main.8fae1e1c.css.map": "/online-store/static/css/main.8fae1e1c.css.map",
+    "main.d9ba731f.js.map": "/online-store/static/js/main.d9ba731f.js.map"
   },
   "entrypoints": [
-    "static/css/main.0cb91a12.css",
-    "static/js/main.0ddeab1b.js"
+    "static/css/main.8fae1e1c.css",
+    "static/js/main.d9ba731f.js"
   ]
 }
