@@ -35,8 +35,6 @@ export function Catalog(props: PropsType) {
 
   const finalArr = searchValue ? searchProducts : rangeProducts;
 
-  console.log(rangeProducts);
-
   useEffect(() => {
     dispatch(findProducts(finalArr.length));
   }, [finalArr]);
