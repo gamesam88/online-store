@@ -32,7 +32,9 @@ const Cart = () => {
   const slicePage = cartElements && cartElements.slice(arrStart, arrStart + maxItemsOnPage);
 
   const onChangeNumInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setMaxItemsOnPage(+event.target.value);
+    const value = +event.target.value;
+    if (value > 0) setMaxItemsOnPage(value);
+    else setMaxItemsOnPage(1);
   };
 
   useEffect(() => {
